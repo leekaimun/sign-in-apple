@@ -15,3 +15,4 @@ use App\Http\Controllers\SignInAppleController;
 */
 
 Route::post('applesignin', [SignInAppleController::class, 'handleSIWALogin']);
+Route::get('redirectintent', [SignInAppleController::class, 'redirectIntent']);

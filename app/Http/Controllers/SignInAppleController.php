@@ -41,4 +41,9 @@ class SignInAppleController extends Controller
 		Log::info("Response with error - $message");
 		return redirect()->away("intent://callback?notok#Intent;package=com.sgcomptech.signinapple.sign_in_apple_flutter;scheme=signinwithapple;end");
 	}
+
+	public function redirectIntent()
+	{
+		return redirect()->away("intent://callback?ok#Intent;package=com.sgcomptech.signinapple.sign_in_apple_flutter;scheme=signinwithapple;end");
+	}
 }
