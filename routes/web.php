@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignInAppleController;
+use App\Http\Controllers\AppleVerifyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +16,6 @@ use App\Http\Controllers\SignInAppleController;
 */
 
 Route::view('/', 'welcome');
-Route::post('applesignin', [SignInAppleController::class, 'handleSIWALogin']);
+Route::post('applesigninX', [SignInAppleController::class, 'handleSIWALogin']);
+Route::post('applesignin', [AppleVerifyController::class, 'appleVerify']);
 Route::get('redirectintent', [SignInAppleController::class, 'redirectIntent']);

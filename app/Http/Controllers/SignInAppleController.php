@@ -16,7 +16,8 @@ class SignInAppleController extends Controller
 		$body = 'client_id=' . config('custom.siwa_client_id') .
 			'&client_secret=' . config('custom.siwa_client_secret') .
 			'&code=' . $authorizationCode .
-			'&grant_type=' . config('custom.siwa_grant_type');
+			'&grant_type=authorization_code' . // config('custom.siwa_grant_type');
+			'&redirect_uri=https%3A%2F%2Fbeblu.sgcomp-tech.com%2Fapplesignin';
 		$client = new Client();
 		$request = new Request("POST", "https://appleid.apple.com/auth/token", ["Content-Type" => "application/x-www-form-urlencoded"], $body); // 2
 		try {
@@ -45,5 +46,9 @@ class SignInAppleController extends Controller
 	public function redirectIntent()
 	{
 		return redirect()->away("intent://callback?ok#Intent;package=com.sgcomptech.signinapple.sign_in_apple_flutter;scheme=signinwithapple;end");
+	}
+
+	function generateJWT()
+	{
 	}
 }
