@@ -71,6 +71,8 @@ class AppleVerifyController extends Controller
 
 		$public_key = JWK::parseKeySet($jwks);
 		$public_key = $public_key[$kid];
+		$parsed_id_token = JWT::decode($id_token, $public_key, ['RS256']);
+		Log::info('$parsed_id_token : ' . print_r($parsed_id_token, true));
 
 		$payload = array(
 			"iss" => $teamId,
@@ -111,6 +113,6 @@ class AppleVerifyController extends Controller
 		Log::info("Claims : " . print_r($claims, true));
 
 		return redirect()->away("intent://callback?ok#Intent;package=" .
-		  config('custom.app_package') . ";scheme=signinwithapple;end");
+			config('custom.app_package') . ";scheme=signinwithapple;end");
 	}
 }
