@@ -17,5 +17,4 @@ use App\Http\Controllers\AppleVerifyController;
 
 Route::view('/', 'welcome');
 Route::post('applesigninX', [SignInAppleController::class, 'handleSIWALogin']);
-Route::post('applesignin', [AppleVerifyController::class, 'appleVerify']);
 Route::get('redirectintent', [SignInAppleController::class, 'redirectIntent']);
